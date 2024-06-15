@@ -1,7 +1,7 @@
 # Dating App Backend
 
 This repository contains the backend implementation for a Dating Mobile App, similar to Tinder or Bumble, built with Go (Golang). It includes RESTful APIs for user authentication, profile management, and swiping functionalities.
-
+Implementing DDD (Domain Driven Design) and SOLID principle.
 ## Features
 
 - User authentication (signup, login)
@@ -70,7 +70,25 @@ Follow these steps to get the project up and running on your local computer.
    API documentation is generated using Swagger. You can access the Swagger UI at:
     ```
    http://localhost:8080/swagger/index.html
-   
+
 8. **Run the unit testing**
     ```
    go test ./...
+   
+**Here's the screenshot of swager endpoint result**
+![img.png](img.png)
+
+**Endpoint for auth**
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+
+**Endpoint for swipe**
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+**this is response when profile already swiped**
+![img_6.png](img_6.png)
+
+**Endpoint for upgradde package**
+![img_7.png](img_7.png)
+![img_8.png](img_8.png)
