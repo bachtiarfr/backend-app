@@ -1,0 +1,127 @@
+basePath: /api
+definitions:
+  dto.PurchaseDTO:
+    properties:
+      package:
+        type: string
+    required:
+    - package
+    type: object
+  dto.UserDTO:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server for a dating app.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Dating App API
+  version: "1.0"
+paths:
+  /auth/purchase:
+    post:
+      consumes:
+      - application/json
+      description: Allows a user to purchase a premium package
+      parameters:
+      - description: Purchase Data
+        in: body
+        name: purchase
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PurchaseDTO'
+      - description: Authorization token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Purchase a premium package
+      tags:
+      - user
+  /auth/swipe/{profileID}/{action}:
+    post:
+      consumes:
+      - application/json
+      description: Swipe left (pass) or right (like) on a profile.
+      parameters:
+      - description: Profile ID to swipe
+        in: path
+        name: profileID
+        required: true
+        type: integer
+      - description: 'Swipe action: ''like'' or ''pass'''
+        in: path
+        name: action
+        required: true
+        type: string
+      - description: Authorization token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Swipe left or right on a profile
+      tags:
+      - swipe
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate a user and return a JWT token
+      parameters:
+      - description: Login Data
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UserDTO'
+      produces:
+      - application/json
+      responses: {}
+      summary: Log in a user
+      tags:
+      - user
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user with the provided details
+      parameters:
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UserDTO'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.UserDTO'
+      summary: Sign up a new user
+      tags:
+      - user
+swagger: "2.0"
